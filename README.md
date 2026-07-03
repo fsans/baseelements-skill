@@ -317,17 +317,6 @@ print(json.dumps(json.loads(urllib.request.urlopen(req).read()), indent=2))
 "
 ```
 
-#### SkillMill — Not yet submitted
-
-[SkillMill](https://skillmill.ai) certifies skills for catalog publication (spec compliance + safety scan + quality grading A–F). Their REST API requires a Team or Enterprise subscription; the free-tier submission path is the web form at [skillmill.ai/submit](https://skillmill.ai/submit), which requires manual sign-in. To submit:
-
-1. Go to <https://skillmill.ai/submit>
-2. Enter the GitHub URL: `https://github.com/fsans/baseelements-skill`
-3. Review the analysis (spec compliance, safety scan, quality grade)
-4. Add contact info and submit for review
-
-Once approved, a SkillMill certification badge can be added here.
-
 ---
 
 ## License & Attribution
