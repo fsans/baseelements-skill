@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-black)](./LICENSE)
 [![Agent Skills Spec](https://img.shields.io/badge/Agent_Skills_Spec-compliant-blue)](https://agentskills.io/specification)
-[![AgentVerus](https://agentverus.ai/api/v1/skill/341f8a01-2b1f-4582-b448-f28e1deb0379/badge)](https://agentverus.ai/skill/341f8a01-2b1f-4582-b448-f28e1deb0379)
+[![AgentVerus](https://agentverus.ai/api/v1/skill/25e4bfd7-988a-4258-8a8a-9ca587a17fc6/badge)](https://agentverus.ai/skill/25e4bfd7-988a-4258-8a8a-9ca587a17fc6)
 
 A [Claude Code](https://claude.com/claude-code) skill that gives any Claude agent deep, accurate knowledge of the [BaseElements Plugin](https://baseelementsplugin.com) for FileMaker — covering all 100+ `BE_` functions across HTTP, file I/O, encryption, XML/XSLT, PDF, SMTP, zip/gzip, regex, JavaScript evaluation, and more.
 
@@ -258,8 +258,8 @@ This checks that `SKILL.md` frontmatter satisfies the spec's required-field and 
 
 The skill was scanned by [AgentVerus](https://agentverus.ai) and received a **certified** trust badge with a score of **96/100**.
 
-- **Report:** <https://agentverus.ai/skill/341f8a01-2b1f-4582-b448-f28e1deb0379>
-- **Badge:** <https://agentverus.ai/api/v1/skill/341f8a01-2b1f-4582-b448-f28e1deb0379/badge>
+- **Report:** <https://agentverus.ai/skill/25e4bfd7-988a-4258-8a8a-9ca587a17fc6>
+- **Badge:** <https://agentverus.ai/api/v1/skill/25e4bfd7-988a-4258-8a8a-9ca587a17fc6/badge>
 - **Scanned:** 2026-07-03 · Scanner v0.8.1
 
 | Category | Score | Weight | Findings |
