@@ -7,6 +7,19 @@ description: Reference guide for the BaseElements Plugin for FileMaker. Use when
 
 The BaseElements Plugin (BE) is a free, open-source FileMaker plugin providing over 100 calculation functions. All functions are prefixed `BE_` and called inside FileMaker calculations or `Set Variable` script steps. The plugin must be installed on every FileMaker client or server where the solution runs.
 
+## Safety Boundaries
+
+This skill is a **reference guide only**. It does not execute code, access the filesystem, or make network requests. Specifically, this skill must **not**:
+
+- Execute FileMaker calculations, scripts, or plugin functions on behalf of the user
+- Read, write, create, or delete any files or directories
+- Make HTTP requests, open network connections, or send email
+- Access, decrypt, or exfiltrate credentials, keys, or secrets
+- Install, uninstall, or modify the BaseElements Plugin itself
+- Modify the user's FileMaker solution, schema, or layout definitions
+
+All code examples in this skill are illustrative snippets to be pasted into the user's FileMaker solution by the user. The skill's sole output is documentation and guidance; any execution happens inside FileMaker under the user's control.
+
 ## Critical Patterns
 
 ### Error handling — capture immediately
