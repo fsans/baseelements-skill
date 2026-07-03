@@ -1,6 +1,6 @@
 # BaseElements Plugin Skill — Project
 
-This project produces a Claude Code skill for the [BaseElements Plugin](https://baseelementsplugin.com), a free open-source FileMaker plugin that extends FileMaker calculations with over 100 `BE_` functions for HTTP, file I/O, encryption, XML/XSLT, PDF, SMTP, zip, regex, and more.
+This project produces an [Agent Skills](https://agentskills.io) skill for the [BaseElements Plugin](https://baseelementsplugin.com), a free open-source FileMaker plugin that extends FileMaker calculations with over 100 `BE_` functions for HTTP, file I/O, encryption, XML/XSLT, PDF, SMTP, zip, regex, and more. The skill works with any skill-aware agent — Claude, Devin, Cursor, or similar.
 
 ## Project Structure
 

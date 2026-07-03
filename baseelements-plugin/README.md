@@ -1,10 +1,10 @@
-# BaseElements Plugin — Claude Code Skill
+# BaseElements Plugin — Agent Skill
 
-A Claude Code skill that gives any Claude agent deep, accurate knowledge of the [BaseElements Plugin](https://baseelementsplugin.com) for FileMaker — including function signatures, parameters, version history, compatibility, and working examples across all 100+ `BE_` functions.
+An [Agent Skills](https://agentskills.io) skill that gives any skill-aware agent — Claude, Devin, Cursor, or similar — deep, accurate knowledge of the [BaseElements Plugin](https://baseelementsplugin.com) for FileMaker, including function signatures, parameters, version history, compatibility, and working examples across all 100+ `BE_` functions.
 
 ## What This Skill Does
 
-When this skill is active, Claude agents automatically understand:
+When this skill is active, skill-aware agents automatically understand:
 
 - **Which function to use** — a full categorized index of all active `BE_` functions with one-line descriptions
 - **How to call it correctly** — exact signatures with required and optional parameters
@@ -15,33 +15,57 @@ When this skill is active, Claude agents automatically understand:
 ## Prerequisites
 
 - [BaseElements Plugin](https://baseelementsplugin.com) installed on every FileMaker client or server where your solution runs
-- Claude Code CLI or any compatible Claude agent runtime that supports the skills system
+- Any skill-aware agent (Claude, Devin, Cursor, or similar) that supports the [Agent Skills](https://agentskills.io) format
 
 ## Installation
 
-### Option A — User-level install (available in all your projects)
+The recommended approach is to install once into a shared `.agents/skills/` folder, then symlink from there into each agent's own skills directory. A single source copy then feeds every agent you use.
 
-Copy or symlink the `baseelements-plugin/` directory into your global skills directory:
+### Step 1 — Install into a shared `.agents/skills/` folder
 
-```bash
-# Copy
-cp -r baseelements-plugin ~/.claude/skills/baseelements-plugin
-
-# Or symlink (changes to the source are reflected immediately)
-ln -s /path/to/baseelements-plugin ~/.claude/skills/baseelements-plugin
-```
-
-### Option B — Project-level install (available only in a specific project)
-
-Copy or symlink into the project's local skills directory:
+**User-level** (available across all your projects):
 
 ```bash
-cp -r baseelements-plugin /your/project/.claude/skills/baseelements-plugin
+mkdir -p ~/.agents/skills
+ln -s /path/to/baseelements-plugin ~/.agents/skills/baseelements-plugin
+# or copy, if you don't need live edits:
+# cp -r baseelements-plugin ~/.agents/skills/baseelements-plugin
 ```
+
+**Project-level** (available only in one project):
+
+```bash
+mkdir -p /your/project/.agents/skills
+ln -s /path/to/baseelements-plugin /your/project/.agents/skills/baseelements-plugin
+```
+
+### Step 2 — Symlink from `.agents/skills/` into each agent's skills directory
+
+Different agents look in different locations. Symlink the shared copy into whichever ones you use:
+
+```bash
+# Claude Code (user-level)
+mkdir -p ~/.claude/skills
+ln -s ~/.agents/skills/baseelements-plugin ~/.claude/skills/baseelements-plugin
+
+# Claude Code (project-level)
+mkdir -p /your/project/.claude/skills
+ln -s /your/project/.agents/skills/baseelements-plugin /your/project/.claude/skills/baseelements-plugin
+
+# Cursor
+mkdir -p ~/.cursor/skills
+ln -s ~/.agents/skills/baseelements-plugin ~/.cursor/skills/baseelements-plugin
+
+# Devin
+mkdir -p ~/.config/devin/skills
+ln -s ~/.agents/skills/baseelements-plugin ~/.config/devin/skills/baseelements-plugin
+```
+
+Repeat for any other skill-aware agent. The symlink means a single update to the `.agents/skills/` copy propagates to every agent immediately.
 
 ### Verify installation
 
-In Claude Code, type `/skills` or ask: *"What skills do you have?"* — you should see `baseelements-plugin` listed.
+Ask your agent *"What skills do you have?"* or run the agent's skill-listing command (e.g. `/skills` in Claude Code) — you should see `baseelements-plugin` listed.
 
 ## Trigger Phrases
 

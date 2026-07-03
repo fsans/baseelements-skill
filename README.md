@@ -1,10 +1,10 @@
-# BaseElements Plugin — Claude Code Skill
+# BaseElements Plugin — Agent Skill
 
 [![License](https://img.shields.io/badge/license-MIT-black)](./LICENSE)
 [![Agent Skills Spec](https://img.shields.io/badge/Agent_Skills_Spec-compliant-blue)](https://agentskills.io/specification)
 [![AgentVerus](https://agentverus.ai/api/v1/skill/25e4bfd7-988a-4258-8a8a-9ca587a17fc6/badge)](https://agentverus.ai/skill/25e4bfd7-988a-4258-8a8a-9ca587a17fc6)
 
-A [Claude Code](https://claude.com/claude-code) skill that gives any Claude agent deep, accurate knowledge of the [BaseElements Plugin](https://baseelementsplugin.com) for FileMaker — covering all 100+ `BE_` functions across HTTP, file I/O, encryption, XML/XSLT, PDF, SMTP, zip/gzip, regex, JavaScript evaluation, and more.
+An [Agent Skills](https://agentskills.io) skill that gives any skill-aware agent — Claude, Devin, Cursor, or similar — deep, accurate knowledge of the [BaseElements Plugin](https://baseelementsplugin.com) for FileMaker, covering all 100+ `BE_` functions across HTTP, file I/O, encryption, XML/XSLT, PDF, SMTP, zip/gzip, regex, JavaScript evaluation, and more.
 
 This repository contains **both** the source documentation (`Functions/`) and the distributable skill package (`baseelements-plugin/`). Install the package, contribute to the sources.
 
@@ -28,7 +28,7 @@ This repository contains **both** the source documentation (`Functions/`) and th
 
 ## What This Project Provides
 
-When the skill is active, a Claude agent automatically understands:
+When the skill is active, a skill-aware agent automatically understands:
 
 - **Which function to use** — a categorized index of every active `BE_` function with one-line descriptions.
 - **How to call it correctly** — exact signatures with required and optional parameters.
@@ -36,7 +36,7 @@ When the skill is active, a Claude agent automatically understands:
 - **What to avoid** — deprecated functions and their native FileMaker replacements.
 - **Full details on demand** — version history, platform compatibility tables, and real example code, loaded per function family only when the agent needs them.
 
-The result: Claude writes correct, idiomatic BaseElements Plugin code the first time, without hallucinating signatures or forgetting `BE_GetLastError`.
+The result: the agent writes correct, idiomatic BaseElements Plugin code the first time, without hallucinating signatures or forgetting `BE_GetLastError`.
 
 ---
 
@@ -94,27 +94,55 @@ Two layers, one source of truth:
 
 ## Quick Start — Install the Skill
 
-You only need the `baseelements-plugin/` directory. Full instructions are in [`baseelements-plugin/README.md`](baseelements-plugin/README.md), but in short:
+You only need the `baseelements-plugin/` directory. The recommended approach is to install once into a shared `.agents/skills/` folder, then symlink from there into each agent's own skills directory. This way a single source copy feeds every agent you use.
 
-### Option A — User-level (available in all your projects)
+### Step 1 — Install into a shared `.agents/skills/` folder
 
-```bash
-cp -r baseelements-plugin ~/.claude/skills/baseelements-plugin
-# or symlink so source edits are reflected immediately:
-ln -s "$(pwd)/baseelements-plugin" ~/.claude/skills/baseelements-plugin
-```
-
-### Option B — Project-level (available only in one project)
+**User-level** (available across all your projects):
 
 ```bash
-cp -r baseelements-plugin /your/project/.claude/skills/baseelements-plugin
+mkdir -p ~/.agents/skills
+ln -s "$(pwd)/baseelements-plugin" ~/.agents/skills/baseelements-plugin
+# or copy, if you don't need live edits:
+# cp -r baseelements-plugin ~/.agents/skills/baseelements-plugin
 ```
+
+**Project-level** (available only in one project):
+
+```bash
+mkdir -p /your/project/.agents/skills
+ln -s "$(pwd)/baseelements-plugin" /your/project/.agents/skills/baseelements-plugin
+```
+
+### Step 2 — Symlink from `.agents/skills/` into each agent's skills directory
+
+Different agents look in different locations. Symlink the shared copy into whichever ones you use:
+
+```bash
+# Claude Code (user-level)
+mkdir -p ~/.claude/skills
+ln -s ~/.agents/skills/baseelements-plugin ~/.claude/skills/baseelements-plugin
+
+# Claude Code (project-level)
+mkdir -p /your/project/.claude/skills
+ln -s /your/project/.agents/skills/baseelements-plugin /your/project/.claude/skills/baseelements-plugin
+
+# Cursor
+mkdir -p ~/.cursor/skills
+ln -s ~/.agents/skills/baseelements-plugin ~/.cursor/skills/baseelements-plugin
+
+# Devin
+mkdir -p ~/.config/devin/skills
+ln -s ~/.agents/skills/baseelements-plugin ~/.config/devin/skills/baseelements-plugin
+```
+
+Repeat for any other skill-aware agent. The symlink means a single update to the `.agents/skills/` copy (or the original repo, if you symlinked that) propagates to every agent immediately.
 
 ### Verify
 
-In Claude Code, run `/skills` or ask *"What skills do you have?"* — `baseelements-plugin` should appear.
+Ask your agent *"What skills do you have?"* or run the agent's skill-listing command (e.g. `/skills` in Claude Code) — `baseelements-plugin` should appear.
 
-**Prerequisites:** the [BaseElements Plugin](https://baseelementsplugin.com) itself must be installed on every FileMaker client or server where your solution runs. The skill teaches Claude how to write the calculations; the plugin executes them.
+**Prerequisites:** the [BaseElements Plugin](https://baseelementsplugin.com) itself must be installed on every FileMaker client or server where your solution runs. The skill teaches the agent how to write the calculations; the plugin executes them.
 
 ---
 
