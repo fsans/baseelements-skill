@@ -8,8 +8,8 @@ Lists the contents of a folder at the *path*, both files and folders by default 
 
 **Parameters**
 
-* *path* : description.
-* *type* : description.
+* *path* : A plugin path to the folder to list.
+* *type* : One of `BE_FileTypeAll`, `BE_FileTypeFile`, or `BE_FileTypeFolder` to filter the results by entry type.
 * *includeSubdirBoolean* ( optional, default:False ) : whether to scan sub directories.
 * *useFullPathBoolean* ( optional, default:False ) : whether to include the full path in the output.
 * *includeHiddenBoolean* ( optional, default:False ) : whether to include files or folder not normally visible.
@@ -55,11 +55,11 @@ If you're getting error 13 when using this flag, consider doing without it and t
 
 	BE_FileListFolder ( "/Users/nick/Desktop" )
 
-	BE_FileListFolder ( $path ; BE_FileType_Folder ; False ; True ; True )
-	
+	BE_FileListFolder ( $path ; BE_FileTypeFolder ; False ; True ; True )
+
 This last one will start at $path, but only return folders, and will not include subdirectories, will return a full path not just the folder names, and will include any hidden folders. :
 
-	BE_FileListFolder ( $path ; BE_FileType_Folder ;
+	BE_FileListFolder ( $path ; BE_FileTypeFolder ;
 	False ; //don't scan sub folders
 	True ; //include a full path
 	True ) //include hidden files

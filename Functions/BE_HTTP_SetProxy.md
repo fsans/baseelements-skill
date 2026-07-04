@@ -15,7 +15,7 @@ Used for setting the HTTP proxy values values before other curl based function c
 
 **Keywords**  
 
-keyword keyword
+HTTP Set Proxy
 
 **Version History**
 

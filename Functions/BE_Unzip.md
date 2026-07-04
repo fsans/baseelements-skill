@@ -40,7 +40,7 @@ If you're unzipping a file, then this function should be used with a *Set Field*
 
 **Example Code**
 
-	BE_Unzip ( BE_SelectFile ( "Select a Zip file to unzip." ) )
+	BE_Unzip ( BE_FileSelectDialog ( "Select a Zip file to unzip." ) )
 
 	BE_Unzip ( "/Users/nick/Desktop/MyFile.zip" )
 	BE_Unzip ( "/Users/nick/Desktop/MyFile.zip" ; "/Users/nick/Desktop/ResultFolder")

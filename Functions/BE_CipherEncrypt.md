@@ -4,7 +4,7 @@
 
 **Description**  
 
-Decrypt *encryptedData* using *cipher*.
+Encrypt *data* using *cipher*.
 
 **Parameters**
 

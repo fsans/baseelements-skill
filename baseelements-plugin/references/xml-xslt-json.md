@@ -314,11 +314,11 @@ Does a "tidy" to reformat nicely the XML text.
 
 ---
 
-## BE_XML_Canonical
+## BE_XMLCanonical
 
 ```
-BE_XML_Canonical ( xml )
-```
+BE_XMLCanonical ( xml )
+``` 
 
 **Description**
 
@@ -517,7 +517,7 @@ V - version info.
 | Mac FMP | Yes |  
 | Win FMP | No |  
 | FMS | Yes |  
-| iOS | Yes |  
+| iOS | No |  
 | Linux | Yes |  
 
 **Example Code**

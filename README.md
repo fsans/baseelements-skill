@@ -175,14 +175,14 @@ The skill organizes the 100+ `BE_` functions into 24 reference families:
 | Containers | `BE_ContainerCompress` · `BE_ConvertContainer` · `BE_JPEGRecompress` |
 | Data Manipulation | `BE_StackPush/Pop` · `BE_VariableSet/Get` · `BE_TextExtractWords` |
 | Dialogs | `BE_DialogDisplay` · `BE_FileSelectDialog` · `BE_FolderSelectDialog` |
-| Encoding & Encryption | `BE_Encrypt_AES` · `BE_CipherEncrypt` · `BE_MessageDigest` · `BE_SignatureGenerateRSA` |
+| Encoding & Encryption | `BE_EncryptAES` · `BE_CipherEncrypt` · `BE_MessageDigest` · `BE_SignatureGenerateRSA` |
 | Error Checking | `BE_GetLastError` · `BE_GetLastDDLError` · `BE_CurlTrace` |
 | Files & Folders | `BE_FileExists` · `BE_FileReadText` · `BE_FileListFolder` · `BE_FTP_Upload` |
 | FileMaker SQL | `BE_FileMakerSQL` |
 | HTTP & URLs | `BE_HTTP_GET/POST/PATCH/PUT/DELETE` · `BE_CurlSetOption` · `BE_OpenURL` |
 | Miscellaneous | `BE_ExecuteSystemCommand` · `BE_EvaluateJavaScript` · `BE_Version` |
 | PDF | `BE_PDFPageCount` · `BE_PDFAppend` · `BE_PDFGetPages` |
-| Preferences | `BE_SetPreference` · `BE_PreferenceGet` · `BE_PreferenceDelete` |
+| Preferences | `BE_PreferenceSet` · `BE_PreferenceGet` · `BE_PreferenceDelete` |
 | Regular Expression | `BE_RegularExpression` |
 | Scripts | `BE_ScriptExecute` · `BE_ScriptStepInstall/Perform/Remove` |
 | SMTP Email | `BE_SMTPServer` · `BE_SMTPSend` · `BE_SMTPAddAttachment` |
@@ -191,7 +191,7 @@ The skill organizes the 100+ `BE_` functions into 24 reference families:
 | Vectors | `BE_VectorDotProduct` · `BE_VectorEuclideanDistance` |
 | XML, XSLT & JSON | `BE_XPath` · `BE_XSLT_Apply` · `BE_XMLParse` · `BE_JSON_jq` |
 | Zip & Gzip | `BE_Zip` · `BE_Unzip` · `BE_Gzip` · `BE_UnGzip` |
-| Constants | `BE_ButtonOK/Cancel/Alternate` · `BE_FileType*` · `BE_ScriptControl*` |
+| Constants | `BE_ButtonOK/Cancel/Alternate` · `BE_FileType*` · `BE_ScriptControl*` *(v5.0+)* |
 | Version Compatibility | v4.0.2 and v5.0.0 breaking-change rename tables and migration guide |
 | Deprecated | `BE_Base64_Encode/Decode` · `BE_HMAC` · `BE_JSONPath` · `BE_ExecuteShellCommand` · and others |
 

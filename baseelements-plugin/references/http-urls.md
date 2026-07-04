@@ -3,7 +3,7 @@
 ## BE_HTTP_GET
 
 ```
-BE_HTTP_GET ( url ; { filename ; username ; password } )
+BE_HTTP_GET ( url ; { fileName ; username ; password } )
 ```
 
 **Description**
@@ -13,7 +13,7 @@ Does a http, https, ftp, ftps, or sftp GET / download and returns the results.  
 **Parameters**
 
 * *url* : The url to retrieve.
-* *username* ( optional ) : The username if the url requires authentication.
+* *fileName* ( optional ) : The filename to use when sending binary data.
 * *username* ( optional ) : The username if the url requires authentication.
 * *password* ( optional ) : The password if the url requires authentication.
 
@@ -49,10 +49,10 @@ This function has been superseded by the Insert From URL script step, and may be
 
 ---
 
-## BE_HTTP_GET_File
+## BE_HTTP_GETFile
 
 ```
-BE_HTTP_GET ( url ; { path ; username ; password } )
+BE_HTTP_GETFile ( url ; { path ; username ; password } )
 ```
 
 **Description**
@@ -244,7 +244,7 @@ BE_HTTP_PUTData ( url ; data ; { username ; password } )
 
 **Description**
 
-Does a HTTP PATCH PUT at the *url* and returns the response if any. This uses the same curl library as the built in *Insert From URL* using "-X PUT" in the curl options.
+Does a HTTP PUT at the *url* and returns the response if any. This uses the same curl library as the built in *Insert From URL* using "-X PUT" in the curl options.
 
 **Parameters**
 
@@ -304,12 +304,12 @@ The server must support the sending of files.
 ## BE_HTTP_PUTFile
 
 ```
-BE_HTTP_PUTData ( url ; path ; { username ; password } )
+BE_HTTP_PUTFile ( url ; path ; { username ; password } )
 ```
 
 **Description**
 
-Does a HTTP PATCH PUT at the *url* and returns the response if any. This uses the same curl library as the built in *Insert From URL* using "-X PUT" in the curl options.
+Does a HTTP PUT at the *url* and returns the response if any. This uses the same curl library as the built in *Insert From URL* using "-X PUT" in the curl options.
 
 **Parameters**
 
