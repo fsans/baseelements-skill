@@ -18,13 +18,12 @@ To use the *keepOpen* option, set this to True when sending multiple messages vi
 
 **Keywords**  
 
-keyword keyword
+SMTP Server
 
 **Version History**
 
 * 3.1.0 : First Release
 * 4.0.2 : Renamed from BE_SMTP_Server
-* 5.0.0 : Renamed from BE_SMTPSend
 
 **Notes**
 

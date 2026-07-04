@@ -41,10 +41,10 @@ BE_FileReadText ( pathOrContainer { ; start ; to ; eolChar } )
 Reads the contents of the file at *pathOrContainer* as text and returns the content, optionall beginning at point *start*, ending at *to* and treating *eolChar* as line characters.
 
 **Parameters**
-* *pathOrContainer* : description.
-* *start* ( optional ) : description.
-* *to* ( optional ) : description.
-* *eolChar* ( optional ) : description.
+* *pathOrContainer* : A plugin path to the file to read, or a container field.
+* *start* ( optional ) : The character position to start reading from. The first character is at position 0. Pass empty or a value greater than *to* to read from the end of the file.
+* *to* ( optional ) : The character position to stop reading at.
+* *eolChar* ( optional ) : Pass empty to read characters. Otherwise used to extract a portion of the file.
 
 Use *start*, *to* and *eolChar* to extract a portion of the file - the first character is at position 0 which is different from the native Position function.
 
@@ -178,7 +178,7 @@ BE_FileCopy ( fromFilePath ; toFilePath {; replaceDestinationFile } )
 ```
 
 **Description**
-Deletes the file at location path.
+Copies the file specified in the *fromFilePath* path parameter, to the location in the *toFilePath* path parameter. Both paths are full paths not folders, including the output filename.
 
 **Parameters**
 * *fromFilePath* : a plugin file path to copy from.
@@ -284,11 +284,11 @@ PLUGIN PATHS ARE NOT FILEMAKER PATHS. The plugin uses the same path structure as
 
 **Example Code**
 
-	BE_DeleteFile ( "/Users/username/Desktop/myNewFolder" )
+	BE_FileDelete ( "/Users/username/Desktop/myNewFolder" )
 
 deletes a folder and all of it's contents
 
-	BE_DeleteFile ( "/Users/username/Desktop/fileA.fp7" )
+	BE_FileDelete ( "/Users/username/Desktop/fileA.fp7" )
 
 deletes a file
 
@@ -341,8 +341,8 @@ BE_FileListFolder ( path { ; type ; includeSubdirBoolean ; useFullPathBoolean ; 
 Lists the contents of a folder at the *path*, both files and folders by default or use a *type* from *BE_FileTypeAll*, *BE_FileTypeFile*, or *BE_FileTypeFolder*.
 
 **Parameters**
-* *path* : description.
-* *type* : description.
+* *path* : A plugin path to the folder to list.
+* *type* : One of `BE_FileTypeAll`, `BE_FileTypeFile`, or `BE_FileTypeFolder` to filter the results by entry type.
 * *includeSubdirBoolean* ( optional, default:False ) : whether to scan sub directories.
 * *useFullPathBoolean* ( optional, default:False ) : whether to include the full path in the output.
 * *includeHiddenBoolean* ( optional, default:False ) : whether to include files or folder not normally visible.
@@ -382,11 +382,11 @@ If you're getting error 13 when using this flag, consider doing without it and t
 
 	BE_FileListFolder ( "/Users/nick/Desktop" )
 
-	BE_FileListFolder ( $path ; BE_FileType_Folder ; False ; True ; True )
+	BE_FileListFolder ( $path ; BE_FileTypeFolder ; False ; True ; True )
 
 This last one will start at $path, but only return folders, and will not include subdirectories, will return a full path not just the folder names, and will include any hidden folders. :
 
-	BE_FileListFolder ( $path ; BE_FileType_Folder ;
+	BE_FileListFolder ( $path ; BE_FileTypeFolder ;
 	False ; //don't scan sub folders
 	True ; //include a full path
 	True ) //include hidden files

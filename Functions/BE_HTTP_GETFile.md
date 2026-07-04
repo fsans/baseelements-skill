@@ -1,6 +1,6 @@
-## BE_HTTP_GET
+## BE_HTTP_GETFile
 
-    BE_HTTP_GET ( url ; { path ; username ; password } )
+    BE_HTTP_GETFile ( url ; { path ; username ; password } )
 
 **Description**  
 

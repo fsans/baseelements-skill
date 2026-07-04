@@ -19,7 +19,7 @@
 
 ### Constants
 
-Constants.md	Constants.md)
+[Constants](Functions/Constants.md)
 
 ### Containers
 
@@ -62,8 +62,12 @@ Constants.md	Constants.md)
 [BE_CipherDecrypt](Functions/BE_CipherDecrypt.md)
 [BE_CipherEncrypt](Functions/BE_CipherEncrypt.md)
 
-[BE_Decrypt_AES](Functions/BE_Decrypt_AES.md)
-[BE_Encrypt_AES](Functions/BE_Encrypt_AES.md)
+[BE_CreateKeyPair](Functions/BE_CreateKeyPair.md)
+[BE_DecryptAES](Functions/BE_DecryptAES.md)
+[BE_DecryptWithKey](Functions/BE_DecryptWithKey.md)
+[BE_EncryptAES](Functions/BE_EncryptAES.md)
+[BE_EncryptWithKey](Functions/BE_EncryptWithKey.md)
+[BE_GetPublicKey](Functions/BE_GetPublicKey.md)
 
 [BE_MessageDigest](Functions/BE_MessageDigest.md)
 
@@ -112,8 +116,8 @@ Constants.md	Constants.md)
 [BE_FTP_UploadFile](Functions/BE_FTP_UploadFile.md)
 
 [BE_HTTP_DELETE](Functions/BE_HTTP_DELETE.md)
-[BE_HTTP_GET_File](Functions/BE_HTTP_GET_File.md)
 [BE_HTTP_GET](Functions/BE_HTTP_GET.md)
+[BE_HTTP_GETFile](Functions/BE_HTTP_GETFile.md)
 [BE_HTTP_PATCH](Functions/BE_HTTP_PATCH.md)
 [BE_HTTP_POST](Functions/BE_HTTP_POST.md)
 [BE_HTTP_PUTData](Functions/BE_HTTP_PUTData.md)
@@ -121,8 +125,8 @@ Constants.md	Constants.md)
 
 [BE_HTTP_ResponseCode](Functions/BE_HTTP_ResponseCode.md)
 [BE_HTTP_ResponseHeaders](Functions/BE_HTTP_ResponseHeaders.md)
-[BE_HTTP_Set_Proxy](Functions/BE_HTTP_Set_Proxy.md)
 [BE_HTTP_SetCustomHeader](Functions/BE_HTTP_SetCustomHeader.md)
+[BE_HTTP_SetProxy](Functions/BE_HTTP_SetProxy.md)
 
 [BE_OpenURL](Functions/BE_OpenURL.md)
 
@@ -159,7 +163,7 @@ Constants.md	Constants.md)
 
 [BE_PreferenceDelete](Functions/BE_PreferenceDelete.md)
 [BE_PreferenceGet](Functions/BE_PreferenceGet.md)
-[BE_SetPreference](Functions/BE_SetPreference.md)
+[BE_PreferenceSet](Functions/BE_PreferenceSet.md)
 
 ### SMTP Email
 
@@ -190,8 +194,9 @@ Constants.md	Constants.md)
 ### XML, XSLT, and JSON
 
 [BE_JSON_ArraySize](Functions/BE_JSON_ArraySize.md)
+[BE_JSON_jq](Functions/BE_JSON_jq.md)
 
-[BE_XML_Canonical](Functions/BE_XML_Canonical.md)
+[BE_XMLCanonical](Functions/BE_XMLCanonical.md)
 [BE_XMLParse](Functions/BE_XMLParse.md)
 [BE_XMLStripInvalidCharacters](Functions/BE_XMLStripInvalidCharacters.md)
 [BE_XMLStripNodes](Functions/BE_XMLStripNodes.md)

@@ -4,7 +4,7 @@
 
 **Description**  
 
-Gets the preference value stored by BE_SetPreference at *key*, in *domain*, from the system.
+Gets the preference value stored by BE_PreferenceSet at *key*, in *domain*, from the system.
 
 Preferences set via the BE plugin are available across all open copies of FileMaker applications.
 

@@ -4,7 +4,7 @@
 
 **Description**  
 
-Does a HTTP PATCH PUT at the *url* and returns the response if any. This uses the same curl library as the built in *Insert From URL* using "-X PUT" in the curl options.
+Does a HTTP PUT at the *url* and returns the response if any. This uses the same curl library as the built in *Insert From URL* using "-X PUT" in the curl options.
 
 **Parameters**
 
