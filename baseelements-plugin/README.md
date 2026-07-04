@@ -90,23 +90,23 @@ Example prompts that trigger the skill:
 | Containers | `BE_ContainerCompress` · `BE_ContainerUncompress` · `BE_ContainerIsCompressed` · `BE_ContainerListTypes` · `BE_ContainerGetType` · `BE_ConvertContainer` · `BE_ExportFieldContents` · `BE_JPEGRecompress` |
 | Data Manipulation | `BE_StackPush` · `BE_StackPop` · `BE_StackCount` · `BE_StackDelete` · `BE_VariableSet` · `BE_VariableGet` · `BE_TextExtractWords` |
 | Dialogs | `BE_DialogDisplay` · `BE_DialogProgress` · `BE_DialogProgressUpdate` · `BE_FileSaveDialog` · `BE_FileSelectDialog` · `BE_FolderSelectDialog` |
-| Encoding & Encryption | `BE_Encrypt_AES` · `BE_Decrypt_AES` · `BE_CipherEncrypt` · `BE_CipherDecrypt` · `BE_MessageDigest` · `BE_SignatureGenerateRSA` · `BE_SignatureVerifyRSA` · `BE_SetTextEncoding` · `BE_CreateKeyPair` · `BE_GetPublicKey` · `BE_EncryptWithKey` · `BE_DecryptWithKey` |
+| Encoding & Encryption | `BE_EncryptAES` · `BE_DecryptAES` · `BE_CipherEncrypt` · `BE_CipherDecrypt` · `BE_MessageDigest` · `BE_SignatureGenerateRSA` · `BE_SignatureVerifyRSA` · `BE_SetTextEncoding` · `BE_CreateKeyPair` · `BE_GetPublicKey` · `BE_EncryptWithKey` · `BE_DecryptWithKey` |
 | Error Checking | `BE_GetLastError` · `BE_GetLastDDLError` · `BE_CurlTrace` · `BE_DebugInformation` |
 | Files & Folders | `BE_FileExists` · `BE_FileReadText` · `BE_FileWriteText` · `BE_FileCopy` · `BE_FileMove` · `BE_FileDelete` · `BE_FileImport` · `BE_FileListFolder` · `BE_FileModificationTimestamp` · `BE_FileOpen` · `BE_FilePatternCount` · `BE_FileReplaceText` · `BE_FileSize` · `BE_FolderCreate` · `BE_FTP_Delete` · `BE_FTP_Upload` · `BE_FTP_UploadFile` |
 | FileMaker SQL | `BE_FileMakerSQL` |
-| HTTP & URLs | `BE_HTTP_GET` · `BE_HTTP_GET_File` · `BE_HTTP_POST` · `BE_HTTP_PATCH` · `BE_HTTP_PUTData` · `BE_HTTP_PUTFile` · `BE_HTTP_DELETE` · `BE_HTTP_SetCustomHeader` · `BE_HTTP_ResponseCode` · `BE_HTTP_ResponseHeaders` · `BE_HTTP_Set_Proxy` · `BE_CurlSetOption` · `BE_OpenURL` · `BE_CurlGetInfo` |
+| HTTP & URLs | `BE_HTTP_GET` · `BE_HTTP_GETFile` · `BE_HTTP_POST` · `BE_HTTP_PATCH` · `BE_HTTP_PUTData` · `BE_HTTP_PUTFile` · `BE_HTTP_DELETE` · `BE_HTTP_SetCustomHeader` · `BE_HTTP_ResponseCode` · `BE_HTTP_ResponseHeaders` · `BE_HTTP_SetProxy` · `BE_CurlSetOption` · `BE_OpenURL` · `BE_CurlGetInfo` |
 | Miscellaneous | `BE_ExecuteSystemCommand` · `BE_EvaluateJavaScript` · `BE_GetMachineName` · `BE_GetSystemDrive` · `BE_Pause` · `BE_Version` · `BE_VersionAutoUpdate` |
 | PDF | `BE_PDFPageCount` · `BE_PDFAppend` · `BE_PDFGetPages` |
-| Preferences | `BE_SetPreference` · `BE_PreferenceGet` · `BE_PreferenceDelete` |
+| Preferences | `BE_PreferenceSet` · `BE_PreferenceGet` · `BE_PreferenceDelete` |
 | Regular Expression | `BE_RegularExpression` |
 | Scripts | `BE_ScriptExecute` · `BE_ScriptStepInstall` · `BE_ScriptStepPerform` · `BE_ScriptStepRemove` |
 | SMTP Email | `BE_SMTPServer` · `BE_SMTPSend` · `BE_SMTPAddAttachment` · `BE_SMTPSetHeader` |
 | Time | `BE_TimeCurrentMilliseconds` · `BE_TimeUTCMilliseconds` · `BE_TimeZoneOffset` |
 | Value Lists | `BE_ValuesSort` · `BE_ValuesUnique` · `BE_ValuesFilterOut` · `BE_ValuesContainsDuplicates` · `BE_ValuesTimesDuplicated` · `BE_ValuesTrim` |
 | Vectors | `BE_VectorDotProduct` · `BE_VectorEuclideanDistance` |
-| XML, XSLT & JSON | `BE_XPath` · `BE_XPathAll` · `BE_XSLT_ApplyInMemory` · `BE_XSLT_Apply` · `BE_XMLParse` · `BE_XMLValidate` · `BE_XMLTidy` · `BE_XML_Canonical` · `BE_XMLStripNodes` · `BE_XMLStripInvalidCharacters` · `BE_JSON_ArraySize` · `BE_JSON_jq` |
+| XML, XSLT & JSON | `BE_XPath` · `BE_XPathAll` · `BE_XSLT_ApplyInMemory` · `BE_XSLT_Apply` · `BE_XMLParse` · `BE_XMLValidate` · `BE_XMLTidy` · `BE_XMLCanonical` · `BE_XMLStripNodes` · `BE_XMLStripInvalidCharacters` · `BE_JSON_ArraySize` · `BE_JSON_jq` |
 | Zip & Gzip | `BE_Zip` · `BE_Unzip` · `BE_Gzip` · `BE_UnGzip` |
-| Constants | `BE_ButtonOK/Cancel/Alternate` · `BE_FileTypeAll/File/Folder` · `BE_EncodingHex/Base64` · `BE_MessageDigestAlgorithmMD5/MDC2` |
+| Constants | `BE_ButtonOK/Cancel/Alternate` · `BE_FileTypeAll/File/Folder` · `BE_EncodingHex/Base64` · `BE_MessageDigestAlgorithmMD5/MDC2/SHA*` · `BE_ScriptControlHalt/Exit/Resume/Pause` *(v5.0+)* |
 | Deprecated | `BE_Base64_Encode/Decode` · `BE_HMAC` · `BE_JSON_Encode` · `BE_JSONPath` · `BE_ExecuteShellCommand` · and others |
 
 ## How the Skill Is Structured

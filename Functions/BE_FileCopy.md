@@ -4,7 +4,7 @@
 
 **Description**  
 
-Deletes the file at location path. 
+Copies the file specified in the *fromFilePath* path parameter, to the location in the *toFilePath* path parameter. Both paths are full paths not folders, including the output filename.
 
 **Parameters**
 

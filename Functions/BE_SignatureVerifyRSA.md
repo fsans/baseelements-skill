@@ -1,6 +1,6 @@
 ## BE_SignatureVerifyRSA
 
-    BE_SignatureVerifyRSA ( data ; publicKey ; { signature ; algorithm )
+    BE_SignatureVerifyRSA ( data ; publicKey ; signature ; { algorithm } )
 
 **Description**  
 
@@ -10,8 +10,8 @@ Verifies if signature is valid for *data* by comparing the message digest of *da
 
 * *data* : The source data that was signed. It can be text or container field.
 * *publicKey* : The openssl public key (as text) to verify the digital signature. PKCS#1 and PKCS#8 PEM formats are supported.
-* *signature* : The digital signature. It can be container field or Base64 encoded text.
-* *algorithm* ( optional, default:SHA256 ) : The hash algorithm name (as text) use to calculate the digest of the data.
+* *signature* : The digital signature to verify. It can be a container field or Base64 encoded text.
+* *algorithm* ( optional, default:SHA256 ) : The hash algorithm name (as text) used to calculate the digest of the data.
 
 **Keywords**  
 

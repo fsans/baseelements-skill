@@ -102,7 +102,7 @@ Does the opposite of the *FilterValues* function : it takes the *textToFilter* p
 
 **Example Code**
 
-	BE_Values_FilterOut ( "a¶b¶c¶d" ; "b¶d" ) = "a¶c"
+	BE_ValuesFilterOut ( "a¶b¶c¶d" ; "b¶d" ) = "a¶c"
 
 ---
 

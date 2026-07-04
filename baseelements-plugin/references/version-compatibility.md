@@ -61,8 +61,10 @@ This was the largest single rename in the plugin's history — over 60 functions
 | `BE_Curl_Set_Option` | `BE_CurlSetOption` |
 | `BE_Curl_Trace` | `BE_CurlTrace` |
 | `BE_CurrentTimeMilliseconds` | `BE_TimeCurrentMilliseconds` |
+| `BE_Decrypt_AES` | `BE_DecryptAES` |
 | `BE_DeleteFile` | `BE_FileDelete` |
 | `BE_DisplayDialog` | `BE_DialogDisplay` |
+| `BE_Encrypt_AES` | `BE_EncryptAES` |
 | `BE_ExecuteScript` | `BE_ScriptExecute` |
 | `BE_File_Modification_Timestamp` | `BE_FileModificationTimestamp` |
 | `BE_FileType_All` | `BE_FileTypeAll` |
@@ -107,5 +109,6 @@ This was the largest single rename in the plugin's history — over 60 functions
 | `BE_Vector_DotProduct` | `BE_VectorDotProduct` |
 | `BE_Vector_EuclideanDistance` | `BE_VectorEuclideanDistance` |
 | `BE_WriteTextToFile` | `BE_FileWriteText` |
+| `BE_XML_Canonical` | `BE_XMLCanonical` |
 | `BE_XML_Parse` | `BE_XMLParse` |
 | `BE_XML_Validate` | `BE_XMLValidate` |

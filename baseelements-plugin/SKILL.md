@@ -37,7 +37,6 @@ Return values: `0` = success · `1` = user canceled · `3` = OS incompatible.
 
 ```
 // 1. Options and headers (set before the call)
-BE_CurlSetOption ( "CURLOPT_SSL_VERIFYPEER" ; 0 )
 BE_HTTP_SetCustomHeader ( "Content-Type" ; "application/json" )
 BE_HTTP_SetCustomHeader ( "Authorization" ; "Bearer " & $token )
 
@@ -51,6 +50,8 @@ Set Variable [ $trace     ; BE_CurlTrace ]           // full transcript for debu
 ```
 
 Call `BE_HTTP_SetCustomHeader` or `BE_CurlSetOption` with no arguments to clear all state before reuse. Curl error codes come from libcurl, not FileMaker.
+
+**TLS certificate validation is on by default.** Do not disable it (`BE_CurlSetOption ( "CURLOPT_SSL_VERIFYPEER" ; 0 )`) in production code — that opens the request to man-in-the-middle attacks. Only set it to `0` for local testing against a self-signed cert, and never against a real endpoint.
 
 ### Paths — plugin paths ≠ FileMaker paths
 
@@ -102,22 +103,22 @@ To look up full signatures, parameters, version history, compatibility, and exam
 | Containers | `BE_ContainerCompress` · `BE_ContainerUncompress` · `BE_ContainerIsCompressed` · `BE_ContainerListTypes` · `BE_ContainerGetType` · `BE_ConvertContainer` · `BE_ExportFieldContents` · `BE_JPEGRecompress` | `references/containers.md` |
 | Data Manipulation | `BE_StackPush` · `BE_StackPop` · `BE_StackCount` · `BE_StackDelete` · `BE_VariableSet` · `BE_VariableGet` · `BE_TextExtractWords` | `references/data-manipulation.md` |
 | Dialogs | `BE_DialogDisplay` · `BE_DialogProgress` · `BE_DialogProgressUpdate` · `BE_FileSaveDialog` · `BE_FileSelectDialog` · `BE_FolderSelectDialog` | `references/dialogs.md` |
-| Encoding & Encryption | `BE_Encrypt_AES` · `BE_Decrypt_AES` · `BE_CipherEncrypt` · `BE_CipherDecrypt` · `BE_MessageDigest` · `BE_SignatureGenerateRSA` · `BE_SignatureVerifyRSA` · `BE_SetTextEncoding` · `BE_CreateKeyPair` · `BE_GetPublicKey` · `BE_EncryptWithKey` · `BE_DecryptWithKey` *(v5.0+)* | `references/encoding-encryption.md` |
+| Encoding & Encryption | `BE_EncryptAES` · `BE_DecryptAES` · `BE_CipherEncrypt` · `BE_CipherDecrypt` · `BE_MessageDigest` · `BE_SignatureGenerateRSA` · `BE_SignatureVerifyRSA` · `BE_SetTextEncoding` · `BE_CreateKeyPair` · `BE_GetPublicKey` · `BE_EncryptWithKey` · `BE_DecryptWithKey` *(v5.0+)* | `references/encoding-encryption.md` |
 | Error Checking | `BE_GetLastError` · `BE_GetLastDDLError` · `BE_CurlTrace` · `BE_DebugInformation` | `references/error-checking.md` |
 | Files & Folders | `BE_FileExists` · `BE_FileReadText` · `BE_FileWriteText` · `BE_FileCopy` · `BE_FileMove` · `BE_FileDelete` · `BE_FileImport` · `BE_FileListFolder` · `BE_FileModificationTimestamp` · `BE_FileOpen` · `BE_FilePatternCount` · `BE_FileReplaceText` · `BE_FileSize` · `BE_FolderCreate` · `BE_FTP_Delete` · `BE_FTP_Upload` · `BE_FTP_UploadFile` | `references/files-folders.md` |
-| HTTP & URLs | `BE_HTTP_GET` · `BE_HTTP_GET_File` · `BE_HTTP_POST` · `BE_HTTP_PATCH` · `BE_HTTP_PUTData` · `BE_HTTP_PUTFile` · `BE_HTTP_DELETE` · `BE_HTTP_SetCustomHeader` · `BE_HTTP_ResponseCode` · `BE_HTTP_ResponseHeaders` · `BE_HTTP_Set_Proxy` · `BE_CurlSetOption` · `BE_OpenURL` · `BE_CurlGetInfo` *(v5.0+)* | `references/http-urls.md` |
+| HTTP & URLs | `BE_HTTP_GET` · `BE_HTTP_GETFile` · `BE_HTTP_POST` · `BE_HTTP_PATCH` · `BE_HTTP_PUTData` · `BE_HTTP_PUTFile` · `BE_HTTP_DELETE` · `BE_HTTP_SetCustomHeader` · `BE_HTTP_ResponseCode` · `BE_HTTP_ResponseHeaders` · `BE_HTTP_SetProxy` · `BE_CurlSetOption` · `BE_OpenURL` · `BE_CurlGetInfo` *(v5.0+)* | `references/http-urls.md` |
 | FileMaker SQL | `BE_FileMakerSQL` | `references/filemaker-sql.md` |
 | Miscellaneous | `BE_ExecuteSystemCommand` · `BE_EvaluateJavaScript` · `BE_GetMachineName` · `BE_GetSystemDrive` · `BE_Pause` · `BE_Version` · `BE_VersionAutoUpdate` | `references/miscellaneous.md` |
 | Regular Expression | `BE_RegularExpression` | `references/regular-expression.md` |
 | Scripts | `BE_ScriptExecute` · `BE_ScriptStepInstall` · `BE_ScriptStepPerform` · `BE_ScriptStepRemove` | `references/scripts.md` |
 | PDF | `BE_PDFPageCount` · `BE_PDFAppend` · `BE_PDFGetPages` | `references/pdf.md` |
-| Preferences | `BE_SetPreference` · `BE_PreferenceGet` · `BE_PreferenceDelete` | `references/preferences.md` |
+| Preferences | `BE_PreferenceSet` · `BE_PreferenceGet` · `BE_PreferenceDelete` | `references/preferences.md` |
 | SMTP Email | `BE_SMTPServer` · `BE_SMTPSend` · `BE_SMTPAddAttachment` · `BE_SMTPSetHeader` | `references/smtp-email.md` |
 | Time | `BE_TimeCurrentMilliseconds` · `BE_TimeUTCMilliseconds` · `BE_TimeZoneOffset` | `references/time.md` |
 | Value Lists | `BE_ValuesSort` · `BE_ValuesUnique` · `BE_ValuesFilterOut` · `BE_ValuesContainsDuplicates` · `BE_ValuesTimesDuplicated` · `BE_ValuesTrim` | `references/value-lists.md` |
 | Vectors | `BE_VectorDotProduct` · `BE_VectorEuclideanDistance` | `references/vectors.md` |
-| XML, XSLT & JSON | `BE_XPath` · `BE_XPathAll` · `BE_XSLT_ApplyInMemory` · `BE_XSLT_Apply` · `BE_XMLParse` · `BE_XMLValidate` · `BE_XMLTidy` · `BE_XML_Canonical` · `BE_XMLStripNodes` · `BE_XMLStripInvalidCharacters` · `BE_JSON_ArraySize` · `BE_JSON_jq` *(v5.0+, no Win)* | `references/xml-xslt-json.md` |
+| XML, XSLT & JSON | `BE_XPath` · `BE_XPathAll` · `BE_XSLT_ApplyInMemory` · `BE_XSLT_Apply` · `BE_XMLParse` · `BE_XMLValidate` · `BE_XMLTidy` · `BE_XMLCanonical` · `BE_XMLStripNodes` · `BE_XMLStripInvalidCharacters` · `BE_JSON_ArraySize` · `BE_JSON_jq` *(v5.0+, no Win/iOS)* | `references/xml-xslt-json.md` |
 | Zip & Gzip | `BE_Zip` · `BE_Unzip` · `BE_Gzip` · `BE_UnGzip` | `references/zip-gzip.md` |
-| Constants | `BE_ButtonOK` · `BE_ButtonCancel` · `BE_ButtonAlternate` · `BE_FileTypeAll` · `BE_FileTypeFile` · `BE_FileTypeFolder` · `BE_EncodingHex` · `BE_EncodingBase64` · `BE_MessageDigestAlgorithmMD5` · `BE_MessageDigestAlgorithmMDC2` · `BE_ScriptControlHalt` · `BE_ScriptControlExit` · `BE_ScriptControlResume` · `BE_ScriptControlPause` *(v5.0+)* | `references/constants.md` |
+| Constants | `BE_ButtonOK` · `BE_ButtonCancel` · `BE_ButtonAlternate` · `BE_FileTypeAll` · `BE_FileTypeFile` · `BE_FileTypeFolder` · `BE_EncodingHex` · `BE_EncodingBase64` · `BE_MessageDigestAlgorithmMD5/SHA256/MDC2/SHA/SHA1/SHA224/SHA384/SHA512` · `BE_ScriptControlHalt` · `BE_ScriptControlExit` · `BE_ScriptControlResume` · `BE_ScriptControlPause` *(v5.0+)* | `references/constants.md` |
 | Version Compatibility | Breaking changes in v4.0.2 and v5.0.0, full rename tables, migration guide | `references/version-compatibility.md` |
 | Deprecated | `BE_Base64_Encode/Decode` · `BE_HMAC` · `BE_JSON_Encode` · `BE_JSONPath` · `BE_ExecuteShellCommand` · `BE_FileMaker_Fields/Tables` · `BE_XeroSetTokens` | `references/deprecated.md` |

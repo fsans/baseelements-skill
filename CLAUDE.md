@@ -8,15 +8,15 @@ This project produces an [Agent Skills](https://agentskills.io) skill for the [B
 baseelements-skill/
 ├── CLAUDE.md                        ← this file
 ├── Functions.md                     ← original function index (source of truth)
-├── Functions/                       ← 126 individual function documentation files
+├── Functions/                       ← individual function documentation files
 │   ├── BE_*.md                      ← one file per active function
 │   ├── Constants.md                 ← plugin constants reference
 │   └── Deprecated/                  ← removed/superseded functions
 │       └── BE_*.md
 └── baseelements-plugin/             ← distributable skill package (install this)
-    ├── SKILL.md                     ← skill entry point (lean, ~90 lines)
+    ├── SKILL.md                     ← skill entry point (lean, ~125 lines)
     ├── README.md                    ← user-facing install and usage guide
-    └── references/                  ← 23 reference files, one per function family
+    └── references/                  ← 24 reference files, one per function family
         ├── arrays.md
         ├── clipboard.md
         ├── constants.md
@@ -39,7 +39,8 @@ baseelements-skill/
         ├── value-lists.md
         ├── vectors.md
         ├── xml-xslt-json.md
-        └── zip-gzip.md
+        ├── zip-gzip.md
+        └── version-compatibility.md
 ```
 
 ## Source Files (`Functions/`)

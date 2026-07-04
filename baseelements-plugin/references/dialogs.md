@@ -151,7 +151,7 @@ BE_FileSaveDialog ( prompt ; { fileName ; inFolder } )
 
 Displays the standard OS save file dialog. Changes the title of the dialog to the *prompt* specified, and defaults to *fileName* and sets the starting location as *inFolder*.
 
-Returns the file path and filename that the user selected.  Check BE_GetLastError = -1 for when the user hits cancel or a value other than 0 for any other error.
+Returns the file path and filename that the user selected.  Check BE_GetLastError = 1 for when the user hits cancel or a value other than 0 for any other error.
 
 **Parameters**
 
@@ -192,12 +192,12 @@ BE_FileSelectDialog ( prompt { ; inFolderPath } )
 
 Displays the standard OS select file dialog with the title of the dialog to the *prompt* specified, and starting path of the *inFolderPath*.
 
-Result is the path to the file selected by the user.  Check BE_GetLastError = -1 for when the user hits cancel or a value other than 0 for any other error.
+Result is the path to the file selected by the user.  Check BE_GetLastError = 1 for when the user hits cancel or a value other than 0 for any other error.
 
 **Parameters**
 
 * *prompt* : The text to display in the dialog.
-* *nainFolderPathme* ( optional ) : The folder to start in when opening the dialog. Defaults to the last used folder as determined by the operating system.
+* *inFolderPath* ( optional ) : The folder to start in when opening the dialog. Defaults to the last used folder as determined by the operating system.
 
 **Version History**
 
@@ -235,12 +235,12 @@ BE_FolderSelectDialog ( prompt { ; inFolderPath } )
 
 Displays the standard OS select folder dialog with the title of the dialog to the *prompt* specified, and starting path of the *inFolderPath*.
 
-Result is the path to the folder selected by the user.  Check BE_GetLastError = -1 for when the user hits cancel or a value other than 0 for any other error.
+Result is the path to the folder selected by the user.  Check BE_GetLastError = 1 for when the user hits cancel or a value other than 0 for any other error.
 
 **Parameters**
 
 * *prompt* : The text to display in the dialog.
-* *nainFolderPathme* ( optional ) : The folder to start in when opening the dialog. Defaults to the last used folder as determined by the operating system.
+* *inFolderPath* ( optional ) : The folder to start in when opening the dialog. Defaults to the last used folder as determined by the operating system.
 
 **Version History**
 

@@ -1,6 +1,6 @@
-## BE_XML_Canonical
+## BE_XMLCanonical
 
-    BE_XML_Canonical ( xml )
+    BE_XMLCanonical ( xml )
 
 **Description**  
 
