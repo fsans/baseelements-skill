@@ -19,7 +19,7 @@
 
 ### Constants
 
-Constants.md	Constants.md)
+[Constants](Functions/Constants.md)
 
 ### Containers
 

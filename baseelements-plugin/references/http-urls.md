@@ -1,5 +1,40 @@
 # HTTP and URLs — BaseElements Plugin
 
+> **Preferred HTTP workflow:** FileMaker's native `Insert from URL [ Select ; No dialog ; $target ; $url ; cURL options ]` script step uses the same libcurl library as the `BE_HTTP_*` functions, requires no plugin, and runs on every client (FMP, FMS, Go, WebDirect, FileMaker Cloud, Data API, CWP). It accepts ~100 curl-style options (`-X`, `-H`, `-d`, `-u`, `--head`, `--dump-header`, `--trace`, `--cert`, `--aws-sigv4`, `--upload-file`, `--mail-from`, … — see the [supported cURL options](https://help.claris.com/en/pro-help/content/curl-options.html)).
+>
+> **Default to `Insert from URL`. Do not use `BE_HTTP_*` / `BE_CurlSetOption` to replace any functionality the native step can perform, unless the user explicitly requests the plugin functions.**
+>
+> Use the `BE_HTTP_*` / `BE_CurlSetOption` / `BE_CurlGetInfo` functions **only** when the request needs one of these verified capabilities that native `Insert from URL` cannot provide:
+>
+> - **`CURLOPT_CERTINFO` + `BE_CurlGetInfo ( "CURLINFO_CERTINFO" )`** — capture the server's TLS certificate chain (issuer, subject, **expiry dates**) for cert-renewal tracking. IFU has no `--certinfo` and no `getinfo` mechanism.
+> - **`BE_CurlGetInfo` for any `CURLINFO_*`** — extract post-request metadata (effective URL, timings, SSL verify result, primary IP, etc.). IFU only exposes `Get(LastError)` / `Get(LastErrorDetail)`.
+> - **Raw `CURLOPT_*` constants with no `--option` equivalent** — e.g. `CURLOPT_TCP_FASTOPEN`, `CURLOPT_HAPROXYPROTOCOL`, `CURLOPT_DOH_URL`, `CURLOPT_SUPPRESS_CONNECT_HEADERS`, `CURLOPT_KEEP_SENDING_ON_ERROR`, `CURLOPT_DISALLOW_USERNAME_IN_URL`, `CURLOPT_HAPPY_EYEBALLS_TIMEOUT_MS`, `CURLOPT_DNS_SHUFFLE_ADDRESSES`, `CURLOPT_SSH_COMPRESSION`. IFU only accepts the documented `--option` forms.
+> - **`BE_HTTP_GETFile` — download directly to an arbitrary OS path** without routing through a container field + export step.
+> - **Calculation-context HTTP calls** — `BE_HTTP_*` are calculation functions usable in auto-enter, custom functions, and `Set Variable`. IFU is a script step and cannot run inside a calculation.
+>
+> **Not valid reasons to use BE — IFU already handles these.** Use the IFU equivalent instead of the BE function:
+>
+> | BE function (avoid) | IFU equivalent (use instead) |
+> |---|---|
+> | `BE_HTTP_GET` | `Insert from URL` (default GET) |
+> | `BE_HTTP_POST` | `Insert from URL` + `--data` / `-d` or `--form` / `-F` |
+> | `BE_HTTP_PUTData` | `Insert from URL` + `-X PUT --data` |
+> | `BE_HTTP_PUTFile` | `Insert from URL` + `--upload-file` / `-T` |
+> | `BE_HTTP_PATCH` | `Insert from URL` + `-X PATCH --data` |
+> | `BE_HTTP_DELETE` | `Insert from URL` + `-X DELETE` |
+> | `BE_CurlSetOption ( "CURLOPT_NOBODY" ; 1 )` + `BE_HTTP_GET` | `Insert from URL` + `--head` / `-I` |
+> | `BE_HTTP_SetCustomHeader` | `--header` / `-H` (one per header) |
+> | `BE_HTTP_ResponseCode` | `--show-error` + `Get(LastErrorDetail)` → `"Response code: nnn"` |
+> | `BE_HTTP_ResponseHeaders` | `--dump-header` / `-D $variable` |
+> | `BE_CurlTrace` | `--trace` / `--trace-ascii $variable` |
+> | `BE_HTTP_SetProxy` | `--proxy` / `-x` + `--proxy-user` / `-U` |
+>
+> **IFU file access — through variables, not OS paths.** Although none of the supported IFU cURL options allow you to directly access or create files in the file system, you can specify a FileMaker variable as the source or destination of the data that the option requires. To access or create a file, you can set the variable to a container field.
+>
+> To access a file, you can set the variable to a container field, which contains the file, then use that variable as the parameter of the cURL option.
+>
+> To create a file, you can use a variable as the parameter of the cURL option, set a container field to that variable, then export the container field as a file.
+
 ## BE_HTTP_GET
 
 ```
@@ -353,7 +388,7 @@ This function has been superseded by the Insert From URL script step, and may be
 
 The type of data being sent is usually determined via a Content_Type header you set via *BE_HTTP_SetCustomHeader*. Each file type will have it's own Content-Type and the web service will determine acceptable types.  
 
-	BE_HTTP_PUTData ( "http://Fictional.Server.com/service.js" ;
+	BE_HTTP_PUTFile ( "http://Fictional.Server.com/service.js" ;
 	"/path/to/file.txt" ;
 	"Administrator" ; "password123" )
 
