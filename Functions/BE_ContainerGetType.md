@@ -13,7 +13,7 @@ Gets the content of the field container in the format of type. Types are only wh
 
 **Keywords**  
 
-keyword keyword
+Container Get Type
 
 **Version History**
 

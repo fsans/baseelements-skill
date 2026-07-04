@@ -1,6 +1,6 @@
 ## BE_HTTP_GET
 
-    BE_HTTP_GET ( url ; { filename ; username ; password } )
+    BE_HTTP_GET ( url ; { fileName ; username ; password } )
 
 **Description**  
 
@@ -9,7 +9,7 @@ Does a http, https, ftp, ftps, or sftp GET / download and returns the results.  
 **Parameters**
 
 * *url* : The url to retrieve.
-* *username* ( optional ) : The username if the url requires authentication.
+* *fileName* ( optional ) : The filename to use when sending binary data.
 * *username* ( optional ) : The username if the url requires authentication.
 * *password* ( optional ) : The password if the url requires authentication.
 

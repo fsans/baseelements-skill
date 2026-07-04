@@ -13,7 +13,7 @@ Exports the contents of the container *field* to disk at the *outputPath* specif
 
 **Keywords**  
 
-keyword keyword
+Export Field Contents
 
 **Version History**
 

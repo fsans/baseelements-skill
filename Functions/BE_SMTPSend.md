@@ -20,7 +20,7 @@ Sends an email via SMTP. Use in conjunction with a call to BE_SMTPServer prior t
 
 **Keywords**  
 
-keyword keyword
+SMTP Send
 
 **Version History**
 

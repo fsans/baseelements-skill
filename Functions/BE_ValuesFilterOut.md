@@ -39,4 +39,4 @@ Notes
 
 **Example Code**
 
-	BE_Values_FilterOut ( "a¶b¶c¶d" ; "b¶d" ) = "a¶c"
+	BE_ValuesFilterOut ( "a¶b¶c¶d" ; "b¶d" ) = "a¶c"

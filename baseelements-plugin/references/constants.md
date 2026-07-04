@@ -38,7 +38,13 @@ Used with the `BE_MessageDigest` function to select the hashing algorithm.
 | Name | Value | Version | Description |
 |---|---|---|---|
 | **BE_MessageDigestAlgorithmMD5** | 1 | 1.2.0 | Selects the MD5 algorithm for use with the *BE_MessageDigest* function. |
+| **BE_MessageDigestAlgorithmSHA256** | 2 | 1.2.0 | Selects the SHA-256 algorithm for use with the *BE_MessageDigest* function. This is the default algorithm. |
 | **BE_MessageDigestAlgorithmMDC2** | 4 | 1.2.0 | Selects the MDC2 algorithm for use with the *BE_MessageDigest* function. |
+| **BE_MessageDigestAlgorithmSHA** | 6 | 1.2.0 | Selects the SHA algorithm for use with the *BE_MessageDigest* function. |
+| **BE_MessageDigestAlgorithmSHA1** | 7 | 1.2.0 | Selects the SHA-1 algorithm for use with the *BE_MessageDigest* function. |
+| **BE_MessageDigestAlgorithmSHA224** | 8 | 1.2.0 | Selects the SHA-224 algorithm for use with the *BE_MessageDigest* function. |
+| **BE_MessageDigestAlgorithmSHA384** | 9 | 1.2.0 | Selects the SHA-384 algorithm for use with the *BE_MessageDigest* function. |
+| **BE_MessageDigestAlgorithmSHA512** | 10 | 1.2.0 | Selects the SHA-512 algorithm for use with the *BE_MessageDigest* function. |
 
 ## Script Control Constants
 
@@ -46,7 +52,7 @@ Used with the `scriptControl` parameter of `BE_ScriptExecute` to control how the
 
 | Name | Value | Version | Description |
 |---|---|---|---|
-| **BE_ScriptControlHalt** | — | 5.0.0 | Halts the current script before running the called script. |
-| **BE_ScriptControlExit** | — | 5.0.0 | Exits the current script before running the called script. |
-| **BE_ScriptControlResume** | — | 5.0.0 | Resumes the current script after the called script completes. |
-| **BE_ScriptControlPause** | — | 5.0.0 | Pauses the current script while the called script runs. |
+| **BE_ScriptControlHalt** | 0 | 5.0.0 | Halts the current script before running the called script. |
+| **BE_ScriptControlExit** | 1 | 5.0.0 | Exits the current script before running the called script. |
+| **BE_ScriptControlResume** | 2 | 5.0.0 | Resumes the current script after the called script completes. |
+| **BE_ScriptControlPause** | 3 | 5.0.0 | Pauses the current script while the called script runs. This is the default when *scriptControl* is not set or is invalid. |

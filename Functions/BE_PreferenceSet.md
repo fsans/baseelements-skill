@@ -1,22 +1,22 @@
-BE_SetPreference
+## BE_PreferenceSet
 
-    BE_SetPreference ( key ; value ; { domain } )
+    BE_PreferenceSet ( key ; value ; { domain } )
 
-**Description**  
+**Description**
 
-Gets the preference value stored by BE_SetPreference at *key*, in *domain*, from the system.
+Sets the preference value with the *key* in the preferences file located at the *domain*.
 
 Preferences set via the BE plugin are available across all open copies of FileMaker applications.
 
 **Parameters**
 
-* *key* : the key code for the value to get.
+* *key* : the key code for the value to set.
 * *value* : the value to store in this key.
 * *domain* ( optional, default: See Notes ) : the domain value of where to locate the preference file.
 
-**Keywords**  
+**Keywords**
 
-Preference Get
+Preference Set
 
 **Version History**
 

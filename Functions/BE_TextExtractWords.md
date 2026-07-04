@@ -13,7 +13,7 @@ This returns a list of all the "words" in the *text* that start with the *wordPr
 
 **Keywords**  
 
-keyword keyword
+Text Extract Words
 
 **Version History**
 

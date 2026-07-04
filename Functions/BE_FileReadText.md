@@ -8,10 +8,10 @@ Reads the contents of the file at *pathOrContainer* as text and returns the cont
 
 **Parameters**
 
-* *pathOrContainer* : description.
-* *start* ( optional ) : description.
-* *to* ( optional ) : description.
-* *eolChar* ( optional ) : description.
+* *pathOrContainer* : A plugin path to the file to read, or a container field.
+* *start* ( optional ) : The character position to start reading from. The first character is at position 0. Pass empty or a value greater than *to* to read from the end of the file.
+* *to* ( optional ) : The character position to stop reading at.
+* *eolChar* ( optional ) : Pass empty to read characters. Otherwise used to extract a portion of the file.
 
 Use *start*, *to* and *eolChar* to extract a portion of the file - the first character is at position 0 which is different from the native Position function.
 
