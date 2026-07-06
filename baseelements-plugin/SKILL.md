@@ -75,6 +75,30 @@ BE_SMTPAddAttachment ( Table::File )       // optional
 BE_SMTPSend ( "from@" ; "to@" ; "Subject" ; "Body" )
 ```
 
+### FileMaker SQL — prefer native `ExecuteSQL` for SELECT
+
+FileMaker's native [`ExecuteSQL`](https://help.claris.com/en/execute-sql.html) function only supports `SELECT` queries, but it should be the **preferred way for every read operation** because it runs without the plugin, is available everywhere (FMP, FMS, Go, WebDirect), and supports **parameterized queries** via the optional `arguments` parameters — which `BE_FileMakerSQL` does not offer. Parameterized queries protect against SQL injection and avoid quoting/escaping headaches with strings, dates, and numbers.
+
+```
+// PREFERRED — native, parameterized, no plugin required
+ExecuteSQL (
+    "SELECT name, email FROM Contacts WHERE status = ? AND created >= ?" ;
+    Char ( 9 ) ; Char ( 13 ) ;
+    "active" ; Date ( 1 ; 1 ; 2024 )
+)
+```
+
+Use `BE_FileMakerSQL` only for **non-SELECT** operations that native FileMaker SQL cannot perform — `INSERT`, `UPDATE`, `DELETE`, `CREATE TABLE`, `DROP TABLE`, `ALTER TABLE`, and other DDL/DML statements — or when you need plugin-only features such as targeting another open database (`databaseName`), writing the result straight to disk (`outputPath`), or returning binary/container data (`asText = False`).
+
+```
+// BE_FileMakerSQL for writes/DDL — native ExecuteSQL cannot do these
+BE_FileMakerSQL ( "UPDATE Contacts SET status = 'inactive' WHERE lastSeen < '2023-01-01'" )
+BE_FileMakerSQL ( "DELETE FROM TempImport WHERE importID = " & $id )
+BE_FileMakerSQL ( "CREATE TABLE AuditLog ( id INT, msg VARCHAR )" )
+```
+
+**Rule of thumb:** `SELECT` → native `ExecuteSQL` (with `?` placeholders and arguments). Anything else → `BE_FileMakerSQL`. See `references/filemaker-sql.md` for the full `BE_FileMakerSQL` signature and notes.
+
 ### Version compatibility — check before using v5.0+ features
 
 This skill documents the **v5.x API**. Two releases introduced breaking changes:
