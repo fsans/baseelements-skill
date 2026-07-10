@@ -33,7 +33,17 @@ Set Variable [ $error  ; BE_GetLastError ]   // must be the very next call
 
 Return values: `0` = success · `1` = user canceled · `3` = OS incompatible.
 
-### HTTP — configure before, inspect after
+### HTTP — prefer native `Insert from URL`
+
+FileMaker's native [`Insert from URL`](https://help.claris.com/en/insert-from-url.html) script step uses the **same libcurl library** as the `BE_HTTP_*` functions, requires no plugin, and runs on every client. It accepts curl-style options via its `cURL options` parameter.
+
+**Default to `Insert from URL` for HTTP requests. Do not use `BE_HTTP_*` / `BE_CurlSetOption` to replace any functionality the native step can perform, unless the user explicitly requests the plugin functions.**
+
+The only verified cases where `BE_HTTP_*` / `BE_CurlSetOption` / `BE_CurlGetInfo` are needed (IFU cannot do them) are: `CURLOPT_CERTINFO` + `BE_CurlGetInfo` for TLS cert chain/expiry capture, any `CURLINFO_*` metadata retrieval, raw `CURLOPT_*` constants with no `--option` equivalent, `BE_HTTP_GETFile` for direct-to-disk downloads, and calculation-context HTTP calls. See `references/http-urls.md` for the full list and the `BE_HTTP_*` signatures.
+
+### HTTP (BE_HTTP_*) — configure before, inspect after
+
+When the plugin HTTP functions are used (for the verified BE-only cases above, or per explicit user request), set options and headers before the call and inspect immediately after:
 
 ```
 // 1. Options and headers (set before the call)
