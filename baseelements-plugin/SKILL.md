@@ -33,7 +33,17 @@ Set Variable [ $error  ; BE_GetLastError ]   // must be the very next call
 
 Return values: `0` = success · `1` = user canceled · `3` = OS incompatible.
 
-### HTTP — configure before, inspect after
+### HTTP — prefer native `Insert from URL`
+
+FileMaker's native [`Insert from URL`](https://help.claris.com/en/insert-from-url.html) script step uses the **same libcurl library** as the `BE_HTTP_*` functions, requires no plugin, and runs on every client. It accepts curl-style options via its `cURL options` parameter.
+
+**Default to `Insert from URL` for HTTP requests. Do not use `BE_HTTP_*` / `BE_CurlSetOption` to replace any functionality the native step can perform, unless the user explicitly requests the plugin functions.**
+
+The only verified cases where `BE_HTTP_*` / `BE_CurlSetOption` / `BE_CurlGetInfo` are needed (IFU cannot do them) are: `CURLOPT_CERTINFO` + `BE_CurlGetInfo` for TLS cert chain/expiry capture, any `CURLINFO_*` metadata retrieval, raw `CURLOPT_*` constants with no `--option` equivalent, `BE_HTTP_GETFile` for direct-to-disk downloads, and calculation-context HTTP calls. See `references/http-urls.md` for the full list and the `BE_HTTP_*` signatures.
+
+### HTTP (BE_HTTP_*) — configure before, inspect after
+
+When the plugin HTTP functions are used (for the verified BE-only cases above, or per explicit user request), set options and headers before the call and inspect immediately after:
 
 ```
 // 1. Options and headers (set before the call)
@@ -74,6 +84,30 @@ BE_SMTPServer ( "smtp.example.com" ; 587 ; "user" ; "pass" )
 BE_SMTPAddAttachment ( Table::File )       // optional
 BE_SMTPSend ( "from@" ; "to@" ; "Subject" ; "Body" )
 ```
+
+### FileMaker SQL — prefer native `ExecuteSQL` for SELECT
+
+FileMaker's native [`ExecuteSQL`](https://help.claris.com/en/execute-sql.html) function only supports `SELECT` queries, but it should be the **preferred way for every read operation** because it runs without the plugin, is available everywhere (FMP, FMS, Go, WebDirect), and supports **parameterized queries** via the optional `arguments` parameters — which `BE_FileMakerSQL` does not offer. Parameterized queries protect against SQL injection and avoid quoting/escaping headaches with strings, dates, and numbers.
+
+```
+// PREFERRED — native, parameterized, no plugin required
+ExecuteSQL (
+    "SELECT name, email FROM Contacts WHERE status = ? AND created >= ?" ;
+    Char ( 9 ) ; Char ( 13 ) ;
+    "active" ; Date ( 1 ; 1 ; 2024 )
+)
+```
+
+Use `BE_FileMakerSQL` only for **non-SELECT** operations that native FileMaker SQL cannot perform — `INSERT`, `UPDATE`, `DELETE`, `CREATE TABLE`, `DROP TABLE`, `ALTER TABLE`, and other DDL/DML statements — or when you need plugin-only features such as targeting another open database (`databaseName`), writing the result straight to disk (`outputPath`), or returning binary/container data (`asText = False`).
+
+```
+// BE_FileMakerSQL for writes/DDL — native ExecuteSQL cannot do these
+BE_FileMakerSQL ( "UPDATE Contacts SET status = 'inactive' WHERE lastSeen < '2023-01-01'" )
+BE_FileMakerSQL ( "DELETE FROM TempImport WHERE importID = " & $id )
+BE_FileMakerSQL ( "CREATE TABLE AuditLog ( id INT, msg VARCHAR )" )
+```
+
+**Rule of thumb:** `SELECT` → native `ExecuteSQL` (with `?` placeholders and arguments). Anything else → `BE_FileMakerSQL`. See `references/filemaker-sql.md` for the full `BE_FileMakerSQL` signature and notes.
 
 ### Version compatibility — check before using v5.0+ features
 

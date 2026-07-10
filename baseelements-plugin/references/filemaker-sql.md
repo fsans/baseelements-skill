@@ -1,5 +1,11 @@
 # FileMaker SQL — BaseElements Plugin
 
+> **Preferred SQL workflow:** Use FileMaker's native `ExecuteSQL ( sqlQuery ; fieldSeparator ; rowSeparator { ; arguments... } )` for **every SELECT operation**. Native `ExecuteSQL` is plugin-free, available on all clients (FMP, FMS, Go, WebDirect), and supports **parameterized queries** via the optional `arguments` parameters — which `BE_FileMakerSQL` does not. Parameterized queries protect against SQL injection and avoid quoting/escaping issues with strings, dates, and numbers.
+>
+> Reserve `BE_FileMakerSQL` for **non-SELECT** statements (`INSERT`, `UPDATE`, `DELETE`, `CREATE TABLE`, `DROP TABLE`, `ALTER TABLE`, and other DDL/DML) that native FileMaker SQL cannot perform, or when you need plugin-only features: targeting another open database (`databaseName`), writing the result to disk (`outputPath`), or returning binary/container data (`asText = False`).
+>
+> **Rule of thumb:** `SELECT` → native `ExecuteSQL` (with `?` placeholders and arguments). Anything else → `BE_FileMakerSQL`.
+
 ## BE_FileMakerSQL
 
 ```
