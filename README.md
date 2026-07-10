@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-black)](./LICENSE)
 [![Agent Skills Spec](https://img.shields.io/badge/Agent_Skills_Spec-compliant-blue)](https://agentskills.io/specification)
-[![AgentVerus](https://agentverus.ai/api/v1/skill/25e4bfd7-988a-4258-8a8a-9ca587a17fc6/badge)](https://agentverus.ai/skill/25e4bfd7-988a-4258-8a8a-9ca587a17fc6)
+[![AgentVerus](https://agentverus.ai/api/v1/skill/0304e8f1-22fe-4605-bca0-200ae936fedf/badge)](https://agentverus.ai/skill/0304e8f1-22fe-4605-bca0-200ae936fedf)
 
 An [Agent Skills](https://agentskills.io) skill that gives any skill-aware agent — Claude, Devin, Cursor, or similar — deep, accurate knowledge of the [BaseElements Plugin](https://baseelementsplugin.com) for FileMaker, covering all 100+ `BE_` functions across HTTP, file I/O, encryption, XML/XSLT, PDF, SMTP, zip/gzip, regex, JavaScript evaluation, and more.
 
@@ -48,7 +48,7 @@ baseelements-skill/
 ├── CLAUDE.md                        ← project rules for AI agents working in this repo
 ├── LICENSE                          ← MIT
 ├── Functions.md                     ← original function index (source of truth)
-├── Functions/                       ← 126 individual function documentation files
+├── Functions/                       ← 129 individual function documentation files
 │   ├── BE_*.md                      ← one file per active function
 │   ├── Constants.md                 ← plugin constants reference
 │   └── Deprecated/                  ← removed/superseded functions
@@ -160,7 +160,7 @@ The skill uses **progressive disclosure** to keep context lean:
 
 2. **`references/*.md`** files are loaded by the agent only when it needs the full documentation for a specific function family. Each file contains signatures, parameter descriptions, version history, compatibility tables, and example code — faithfully copied from the corresponding `Functions/BE_*.md` source files.
 
-This keeps the always-on footprint small (~110 lines) while still giving the agent access to the complete 100+ function library on demand.
+This keeps the always-on footprint small (~125 lines) while still giving the agent access to the complete 100+ function library on demand.
 
 ---
 
@@ -286,9 +286,9 @@ This checks that `SKILL.md` frontmatter satisfies the spec's required-field and 
 
 The skill was scanned by [AgentVerus](https://agentverus.ai) and received a **certified** trust badge with a score of **96/100**.
 
-- **Report:** <https://agentverus.ai/skill/25e4bfd7-988a-4258-8a8a-9ca587a17fc6>
-- **Badge:** <https://agentverus.ai/api/v1/skill/25e4bfd7-988a-4258-8a8a-9ca587a17fc6/badge>
-- **Scanned:** 2026-07-03 · Scanner v0.8.1
+- **Report:** <https://agentverus.ai/skill/0304e8f1-22fe-4605-bca0-200ae936fedf>
+- **Badge:** <https://agentverus.ai/api/v1/skill/0304e8f1-22fe-4605-bca0-200ae936fedf/badge>
+- **Scanned:** 2026-07-04 · Scanner v0.8.1
 
 | Category | Score | Weight | Findings |
 |----------|-------|--------|----------|
