@@ -54,7 +54,7 @@ baseelements-skill/
 │   └── Deprecated/                  ← removed/superseded functions
 │       └── BE_*.md
 └── baseelements-plugin/             ← distributable skill package (install this)
-    ├── SKILL.md                     ← skill entry point (lean, ~110 lines)
+    ├── SKILL.md                     ← skill entry point (lean, ~125 lines)
     ├── README.md                    ← user-facing install and usage guide
     └── references/                  ← 24 reference files, one per function family
         ├── arrays.md
